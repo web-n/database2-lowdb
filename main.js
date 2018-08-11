@@ -1,7 +1,8 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('db.json')
-const db = low(adapter)
+var shortid = require('shortid');
+var low = require('lowdb')
+var FileSync = require('lowdb/adapters/FileSync')
+var adapter = new FileSync('db.json')
+var db = low(adapter)
 // Set some defaults (required if your JSON file is empty)
 db.defaults({
     topic: [],
@@ -34,7 +35,30 @@ db.defaults({
 //     .value()
 // );
 
+// db.get('topic')
+//     .find({id:2})
+//     .assign({title:'MySQL & MariaDB'})
+//     .write();
+
+// db.get('topic')
+//     .remove({
+//         id: 2
+//     })
+//     .write();
+
+var sid = shortid.generate();
+db.get('author')
+    .push({
+        id:sid,
+        name:'taeho',
+        profile:'data scientist'
+    }).write();
+
 db.get('topic')
-    .find({id:2})
-    .assign({title:'MySQL & MariaDB'})
-    .write();
+    .push({
+        id:shortid.generate(),
+        title:'PostgreSQL',
+        description:'PostgreSQL is ...',
+        author:sid
+    }).write();
+    

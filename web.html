@@ -41,13 +41,17 @@
         // );
 
 
+        // db.get('topic')
+        //     .find({
+        //         id: 2
+        //     })
+        //     .assign({
+        //         title: 'MySQL & MariaDB'
+        //     })
+        //     .write();
+
         db.get('topic')
-            .find({
-                id: 2
-            })
-            .assign({
-                title: 'MySQL & MariaDB'
-            })
+            .remove({id:2})
             .write();
     </script>
 
