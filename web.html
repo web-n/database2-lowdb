@@ -1,14 +1,37 @@
 <!doctype html>
 <html>
-    <head>
-            <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
-            <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
-            <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
-            <script>
-              var adapter = new LocalStorage('db')
-              var db = low(adapter)
-              db.defaults({ topic: [], author: []}).write();
-            </script>
-            
-    </head>
+
+<head>
+    <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
+    <script>
+        var adapter = new LocalStorage('db')
+        var db = low(adapter)
+        db.defaults({
+            topic: [],
+            author: []
+        }).write();
+        db.get('author').push({
+            id:1,
+            name:'egoing',
+            profile:'developer' 
+        }).write();
+        db.get('topic').push({
+            id:1,
+            title:'lowdb',
+            description:'lowdb is ...',
+            author:1
+        }).write();
+
+        db.get('topic').push({
+            id: 2,
+            title: 'mysql',
+            description: 'mysql is ...',
+            author: 1
+        }).write();
+    </script>
+
+</head>
+
 </html>
