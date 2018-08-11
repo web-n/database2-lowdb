@@ -31,14 +31,24 @@
         //     author: 1
         // }).write();
 
-        console.log(
-            db.get('topic')
+        // console.log(
+        //     db.get('topic')
+        //     .find({
+        //         title: 'lowdb',
+        //         author: 1
+        //     })
+        //     .value()
+        // );
+
+
+        db.get('topic')
             .find({
-                title: 'lowdb',
-                author: 1
+                id: 2
             })
-            .value()
-        );
+            .assign({
+                title: 'MySQL & MariaDB'
+            })
+            .write();
     </script>
 
 </head>
