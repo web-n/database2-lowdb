@@ -7,11 +7,13 @@ db.defaults({
     topic: [],
     author: []
 }).write();
+
 // db.get('author').push({
 //     id:1,
 //     name:'egoing',
 //     profile:'developer' 
 // }).write();
+
 // db.get('topic').push({
 //     id:1,
 //     title:'lowdb',
@@ -19,9 +21,15 @@ db.defaults({
 //     author:1
 // }).write();
 
-db.get('topic').push({
-    id: 2,
-    title: 'mysql',
-    description: 'mysql is ...',
-    author: 1
-}).write();
+// db.get('topic').push({
+//     id: 2,
+//     title: 'mysql',
+//     description: 'mysql is ...',
+//     author: 1
+// }).write();
+
+console.log(
+    db.get('topic')
+    .find({title:'lowdb', author:1})
+    .value()
+);
